@@ -25,36 +25,8 @@ struct ContentView: View {
                 }
             }
             .foregroundColor(.red)
-            Spacer(minLength: 20.0)
-            HStack {
-                addBtnView
-                Spacer()
-                removeBtnView
-            }
-            .font(.largeTitle)
-            .padding(.horizontal)
         }
         .padding(.horizontal)
-    }
-    
-    var addBtnView: some View {
-        Button(action: {
-            if emojiCount < emojis.count {
-                emojiCount += 1
-            }
-        }, label: {
-            Image(systemName: "plus.circle")
-        })
-    }
-    
-    var removeBtnView: some View {
-        Button(action: {
-            if emojiCount > 1 {
-                emojiCount -= 1
-            }
-        }, label: {
-            Image(systemName: "minus.circle")
-        })
     }
 }
 
@@ -76,11 +48,5 @@ struct CardView: View {
         .onTapGesture {
             isFaceUp = !isFaceUp
         }
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
     }
 }
