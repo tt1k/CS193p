@@ -13,21 +13,24 @@ struct MemoryGameView: View {
     @ObservedObject var viewModel: MemoryGameViewModel
     
     var body: some View {
-        VStack {
-            ScrollView {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: 70))]) {
-                    ForEach(viewModel.cards) { card in
-                        CardView(card: card)
-                            .aspectRatio(2/3, contentMode: .fit)
-                            .onTapGesture {
-                                viewModel.choose(card)
-                            }
-                    }
-                }
-            }
-            .foregroundColor(.red)
-        }
+        AspectVGrid(items: viewModel.cards, aspectRatio: 2/3, content: { card in
+            cardView(for: card)
+        })
+        .foregroundColor(.red)
         .padding(.horizontal)
+    }
+    
+    @ViewBuilder
+    private func cardView(for card: MemoryGameViewModel.Card) -> some View {
+        if card.isMatched && !card.isFaceUp {
+            Rectangle().opacity(0.0)
+        } else {
+            CardView(card: card)
+                .padding(4.0)
+                .onTapGesture {
+                    viewModel.choose(card)
+                }
+        }
     }
 }
 
@@ -42,6 +45,9 @@ struct CardView: View {
                 if card.isFaceUp {
                     shape.fill().foregroundColor(.white)
                     shape.strokeBorder(lineWidth: DrawingContants.lineWidth)
+                    Pie(startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: 45.0))
+                        .padding(5.0)
+                        .opacity(0.5)
                     Text(card.content).font(.system(size: size))
                 } else if card.isMatched {
                     shape.opacity(DrawingContants.clearOpacity)
@@ -53,9 +59,17 @@ struct CardView: View {
     }
     
     private struct DrawingContants {
-        static let cornerRadius: CGFloat = 20.0
+        static let cornerRadius: CGFloat = 10.0
         static let lineWidth: CGFloat = 3.0
-        static let fontScale: CGFloat = 0.8
+        static let fontScale: CGFloat = 0.6
         static let clearOpacity: CGFloat = 0.0
+    }
+}
+
+struct Preview: PreviewProvider {
+    static var previews: some View {
+        let game = MemoryGameViewModel()
+        game.choose(game.cards.first!)
+        return MemoryGameView(viewModel: game)
     }
 }
