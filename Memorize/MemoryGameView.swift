@@ -32,20 +32,30 @@ struct MemoryGameView: View {
 }
 
 struct CardView: View {
-    let card: MemoryGameModel<String>.Card
+    let card: MemoryGameViewModel.Card
     
     var body: some View {
-        let shape: RoundedRectangle = RoundedRectangle(cornerRadius: 20.0)
-        ZStack {
-            if card.isFaceUp {
-                shape.fill().foregroundColor(.white)
-                shape.strokeBorder(lineWidth: 3.0)
-                Text(card.content).font(.largeTitle)
-            } else if card.isMatched {
-                shape.opacity(0)
-            } else {
-                shape.fill()
+        GeometryReader(content: { geometry in
+            let shape: RoundedRectangle = RoundedRectangle(cornerRadius: DrawingContants.cornerRadius)
+            let size: CGFloat = DrawingContants.fontScale * min(geometry.size.width, geometry.size.height)
+            ZStack {
+                if card.isFaceUp {
+                    shape.fill().foregroundColor(.white)
+                    shape.strokeBorder(lineWidth: DrawingContants.lineWidth)
+                    Text(card.content).font(.system(size: size))
+                } else if card.isMatched {
+                    shape.opacity(DrawingContants.clearOpacity)
+                } else {
+                    shape.fill()
+                }
             }
-        }
+        })
+    }
+    
+    private struct DrawingContants {
+        static let cornerRadius: CGFloat = 20.0
+        static let lineWidth: CGFloat = 3.0
+        static let fontScale: CGFloat = 0.8
+        static let clearOpacity: CGFloat = 0.0
     }
 }

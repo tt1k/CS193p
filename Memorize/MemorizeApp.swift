@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MemorizeApp: App {
-    let game = MemoryGameViewModel()
+    private let game = MemoryGameViewModel()
     
     var body: some Scene {
         WindowGroup {

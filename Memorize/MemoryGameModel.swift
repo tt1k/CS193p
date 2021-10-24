@@ -7,11 +7,25 @@
 
 import Foundation
 
+/// Extension
+extension Array {
+    var oneAndOnly: Element? {
+        if 1 == count {
+            return first
+        } else {
+            return nil
+        }
+    }
+}
+
 /// Model
 struct MemoryGameModel<CardContent> where CardContent: Equatable {
     private(set) var cards: Array<Card>
     
-    private var indexOfTheOnlyFaceUpCard: Int?
+    private var indexOfTheOnlyFaceUpCard: Int? {
+        get { cards.indices.filter({ cards[$0].isFaceUp }).oneAndOnly }
+        set { cards.indices.forEach({ cards[$0].isFaceUp = ($0 == newValue) }) }
+    }
     
     /// mutating means this function can change things in this struct
     mutating func choose(_ card: Card) {
@@ -23,20 +37,16 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
                     cards[potentialMatchCard].isMatched = true
                     cards[chosenIndex].isMatched = true
                 }
-                indexOfTheOnlyFaceUpCard = nil
+                cards[chosenIndex].isFaceUp = true
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
                 indexOfTheOnlyFaceUpCard = chosenIndex
             }
-            cards[chosenIndex].isFaceUp.toggle()
         }
     }
     
     /// passing a function as a parameter
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent) {
-        cards = Array<Card>()
+        cards = []
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
             cards.append(Card(id: pairIndex * 2, content: content))
@@ -46,10 +56,10 @@ struct MemoryGameModel<CardContent> where CardContent: Equatable {
 
     /// Card structure
     struct Card: Identifiable {
-        var id: Int
+        let id: Int
         
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
-        var content: CardContent
+        var isFaceUp = false
+        var isMatched = false
+        let content: CardContent
     }
 }
