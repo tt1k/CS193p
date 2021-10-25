@@ -39,30 +39,40 @@ struct CardView: View {
     
     var body: some View {
         GeometryReader(content: { geometry in
-            let shape: RoundedRectangle = RoundedRectangle(cornerRadius: DrawingContants.cornerRadius)
-            let size: CGFloat = DrawingContants.fontScale * min(geometry.size.width, geometry.size.height)
             ZStack {
-                if card.isFaceUp {
-                    shape.fill().foregroundColor(.white)
-                    shape.strokeBorder(lineWidth: DrawingContants.lineWidth)
-                    Pie(startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: 45.0))
-                        .padding(5.0)
-                        .opacity(0.5)
-                    Text(card.content).font(.system(size: size))
-                } else if card.isMatched {
-                    shape.opacity(DrawingContants.clearOpacity)
-                } else {
-                    shape.fill()
-                }
+                Pie(startAngle: Angle(degrees: -90.0), endAngle: Angle(degrees: 45.0))
+                    .padding(DrawingContants.piePadding)
+                    .opacity(DrawingContants.pieOpacity)
+                Text(card.content)
+                    .rotationEffect(Angle.degrees(card.isMatched ? 360.0 : 0.0))
+                    .animation(Animation.linear(duration: DrawingContants.aniDuration)
+                    .repeatForever(autoreverses: false))
+                    .font(.system(size: DrawingContants.fontSize))
+                    .scaleEffect(scale(thatFits: geometry.size))
             }
+            .cardify(isFaceUp: card.isFaceUp)
         })
     }
     
+    /// fix animation bug when rotating device
+    private func scale(thatFits size:CGSize) -> CGFloat {
+        min(size.width, size.height) / (DrawingContants.fontSize / DrawingContants.fontScale)
+    }
+    
     private struct DrawingContants {
-        static let cornerRadius: CGFloat = 10.0
-        static let lineWidth: CGFloat = 3.0
+        static let piePadding = 5.0
+        static let pieOpacity = 0.5
+        
         static let fontScale: CGFloat = 0.6
-        static let clearOpacity: CGFloat = 0.0
+        static let fontSize: CGFloat = 32.0
+        
+        static let aniDuration: CGFloat = 1.0
+    }
+}
+
+extension View {
+    func cardify(isFaceUp: Bool) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
     }
 }
 
