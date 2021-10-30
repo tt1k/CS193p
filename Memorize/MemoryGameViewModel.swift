@@ -29,8 +29,17 @@ class MemoryGameViewModel: ObservableObject {
         return model.cards
     }
     
+    /// MARK: Intent Functions
+    
     func choose(_ card: Card) {
         model.choose(card)
     }
     
+    func shuffle() {
+        model.shuffle()
+    }
+    
+    func restart() {
+        model = MemoryGameViewModel.createMemoryGameViewModel()
+    }
 }
