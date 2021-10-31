@@ -188,7 +188,7 @@ extension View {
     }
 }
 
-struct Preview: PreviewProvider {
+struct MemoryGameViewPreview: PreviewProvider {
     static var previews: some View {
         let game = MemoryGameViewModel()
         game.choose(game.cards.first!)
