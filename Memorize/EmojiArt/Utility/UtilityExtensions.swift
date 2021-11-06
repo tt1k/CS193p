@@ -1,8 +1,9 @@
 //
 //  UtilityExtensions.swift
-//  Memorize
+//  EmojiArt
 //
-//  Created by FakeCoder on 2021/10/31.
+//  Created by CS193p Instructor on 4/26/21.
+//  Copyright © 2021 Stanford University. All rights reserved.
 //
 
 import SwiftUI
@@ -74,17 +75,15 @@ extension Set where Element: Identifiable {
 /// we want them to be "emoji only"
 /// (thus isEmoji below)
 /// and we don't want them to have repeated emojis
-/// (thus withNoRepeatedCharacters below)
+/// (thus withoutDuplicateCharacters below)
 
 extension String {
-    var withNoRepeatedCharacters: String {
-        var uniqued = ""
-        for ch in self {
-            if !uniqued.contains(ch) {
-                uniqued.append(ch)
+    var removingDuplicateCharacters: String {
+        reduce(into: "") { sofar, element in
+            if !sofar.contains(element) {
+                sofar.append(element)
             }
         }
-        return uniqued
     }
 }
 
@@ -182,7 +181,7 @@ extension CGSize {
 /// add RawRepresentable protocol conformance to CGSize and CGFloat
 /// so that they can be used with @SceneStorage
 /// we do this by first providing default implementations of rawValue and init(rawValue:)
-/// in RawRepresentable when the thing in question is Codable (which both CGFloat and CGSize are)
+///   in RawRepresentable when the thing in question is Codable (which both CGFloat and CGSize are)
 /// then all it takes to make something that is Codable be RawRepresentable is to declare it to be so
 /// (it will then get the default implementions needed to be a RawRepresentable)
 
@@ -251,3 +250,4 @@ extension Array where Element == NSItemProvider {
         loadObjects(ofType: theType, firstOnly: true, using: load)
     }
 }
+

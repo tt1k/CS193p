@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E211C2C52736516300EA152B /* PaletteChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E211C2C42736516300EA152B /* PaletteChooser.swift */; };
+		E211C2C7273664AB00EA152B /* PaletteEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E211C2C6273664AB00EA152B /* PaletteEditor.swift */; };
+		E211C2C92736817100EA152B /* PaletteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E211C2C82736817100EA152B /* PaletteManager.swift */; };
 		E24AA81E27255D4A00612D40 /* AspectVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = E24AA81D27255D4A00612D40 /* AspectVGrid.swift */; };
 		E2510C7A27256F7D00457B34 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2510C7927256F7D00457B34 /* Pie.swift */; };
 		E2510C7C272704C500457B34 /* Cardify.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2510C7B272704C500457B34 /* Cardify.swift */; };
@@ -26,6 +29,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E211C2C42736516300EA152B /* PaletteChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteChooser.swift; sourceTree = "<group>"; };
+		E211C2C6273664AB00EA152B /* PaletteEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteEditor.swift; sourceTree = "<group>"; };
+		E211C2C82736817100EA152B /* PaletteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteManager.swift; sourceTree = "<group>"; };
 		E24AA81D27255D4A00612D40 /* AspectVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectVGrid.swift; sourceTree = "<group>"; };
 		E2510C7927256F7D00457B34 /* Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 		E2510C7B272704C500457B34 /* Cardify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cardify.swift; sourceTree = "<group>"; };
@@ -60,6 +66,9 @@
 			isa = PBXGroup;
 			children = (
 				E26A318527357F40004EE35D /* PaletteStore.swift */,
+				E211C2C42736516300EA152B /* PaletteChooser.swift */,
+				E211C2C6273664AB00EA152B /* PaletteEditor.swift */,
+				E211C2C82736817100EA152B /* PaletteManager.swift */,
 			);
 			path = PaletteStore;
 			sourceTree = "<group>";
@@ -201,6 +210,7 @@
 				E2FBA8D6272E493900F1F791 /* EmojiArtModel.Background.swift in Sources */,
 				E2510C7C272704C500457B34 /* Cardify.swift in Sources */,
 				E2FBA8D4272E46F800F1F791 /* EmojiArtModel.swift in Sources */,
+				E211C2C7273664AB00EA152B /* PaletteEditor.swift in Sources */,
 				E2E09792271B112900C15E91 /* MemoryGameModel.swift in Sources */,
 				E295C23A270F57F60021B81A /* MemoryGameView.swift in Sources */,
 				E295C238270F57F60021B81A /* MemorizeApp.swift in Sources */,
@@ -209,8 +219,10 @@
 				E24AA81E27255D4A00612D40 /* AspectVGrid.swift in Sources */,
 				E2FBA8DE272E4DEF00F1F791 /* EmojiArtDocumentView.swift in Sources */,
 				E2E09794271B143400C15E91 /* MemoryGameViewModel.swift in Sources */,
+				E211C2C92736817100EA152B /* PaletteManager.swift in Sources */,
 				E2FBA8DC272E4D6B00F1F791 /* UtilityViews.swift in Sources */,
 				E26A318627357F40004EE35D /* PaletteStore.swift in Sources */,
+				E211C2C52736516300EA152B /* PaletteChooser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
