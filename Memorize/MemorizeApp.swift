@@ -7,18 +7,46 @@
 
 import SwiftUI
 
+//@main
+//struct MemorizeApp: App {
+//    @StateObject var document = EmojiArtDocumentViewModel()
+//    @StateObject var paletteStore = PaletteStore(named: "Default")
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            EmojiArtDocumentView(document: document)
+//                .environmentObject(paletteStore)
+//        }
+//    }
+//}
+
 @main
 struct MemorizeApp: App {
-//    private let game = MemoryGameViewModel()
+    enum AppMode: Equatable {
+        case MemorizeAppMode
+        case EmojiArtAppMode
+    }
+    
+    /// switch this mode to get in different app
+    private let appMode:AppMode = .EmojiArtAppMode
+    
+    /// memorize vars
+    private let game = MemoryGameViewModel()
+    
+    /// emojiart vars
     @StateObject var document = EmojiArtDocumentViewModel()
     @StateObject var paletteStore = PaletteStore(named: "Default")
-    
+
     var body: some Scene {
         WindowGroup {
-//            MemoryGameView(viewModel: game)
-//                .preferredColorScheme(.light)
-            EmojiArtDocumentView(document: document)
-                .environmentObject(paletteStore)
+            if appMode == .MemorizeAppMode {
+                MemoryGameView(viewModel: game)
+                    .preferredColorScheme(.light)
+            }
+            if appMode == .EmojiArtAppMode {
+                EmojiArtDocumentView(document: document)
+                    .environmentObject(paletteStore)
+            }
         }
     }
 }

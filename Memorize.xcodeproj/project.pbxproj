@@ -62,6 +62,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E221F95C2736C434004EDCAE /* EmojiArt */ = {
+			isa = PBXGroup;
+			children = (
+				E2FBA8D3272E46F800F1F791 /* EmojiArtModel.swift */,
+				E2FBA8D5272E493900F1F791 /* EmojiArtModel.Background.swift */,
+				E2FBA8D7272E4C1800F1F791 /* EmojiArtDocumentViewModel.swift */,
+				E2FBA8DD272E4DEF00F1F791 /* EmojiArtDocumentView.swift */,
+			);
+			path = EmojiArt;
+			sourceTree = "<group>";
+		};
+		E221F95D2736C444004EDCAE /* Memorize */ = {
+			isa = PBXGroup;
+			children = (
+				E2E09793271B143400C15E91 /* MemoryGameViewModel.swift */,
+				E2E09791271B112900C15E91 /* MemoryGameModel.swift */,
+				E295C239270F57F60021B81A /* MemoryGameView.swift */,
+				E24AA81D27255D4A00612D40 /* AspectVGrid.swift */,
+				E2510C7B272704C500457B34 /* Cardify.swift */,
+				E2510C7927256F7D00457B34 /* Pie.swift */,
+			);
+			path = Memorize;
+			sourceTree = "<group>";
+		};
 		E26A318427357EA6004EE35D /* PaletteStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,14 +116,10 @@
 		E295C236270F57F60021B81A /* Memorize */ = {
 			isa = PBXGroup;
 			children = (
+				E221F95D2736C444004EDCAE /* Memorize */,
 				E2FBA8D2272E46EB00F1F791 /* EmojiArt */,
+				E2FBA8DF272E57B200F1F791 /* Utility */,
 				E295C237270F57F60021B81A /* MemorizeApp.swift */,
-				E2E09793271B143400C15E91 /* MemoryGameViewModel.swift */,
-				E2E09791271B112900C15E91 /* MemoryGameModel.swift */,
-				E295C239270F57F60021B81A /* MemoryGameView.swift */,
-				E24AA81D27255D4A00612D40 /* AspectVGrid.swift */,
-				E2510C7B272704C500457B34 /* Cardify.swift */,
-				E2510C7927256F7D00457B34 /* Pie.swift */,
 				E295C23B270F57F80021B81A /* Assets.xcassets */,
 				E295C23D270F57F80021B81A /* Preview Content */,
 			);
@@ -117,12 +137,8 @@
 		E2FBA8D2272E46EB00F1F791 /* EmojiArt */ = {
 			isa = PBXGroup;
 			children = (
+				E221F95C2736C434004EDCAE /* EmojiArt */,
 				E26A318427357EA6004EE35D /* PaletteStore */,
-				E2FBA8DF272E57B200F1F791 /* Utility */,
-				E2FBA8D3272E46F800F1F791 /* EmojiArtModel.swift */,
-				E2FBA8D5272E493900F1F791 /* EmojiArtModel.Background.swift */,
-				E2FBA8D7272E4C1800F1F791 /* EmojiArtDocumentViewModel.swift */,
-				E2FBA8DD272E4DEF00F1F791 /* EmojiArtDocumentView.swift */,
 			);
 			path = EmojiArt;
 			sourceTree = "<group>";
