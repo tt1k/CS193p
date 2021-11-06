@@ -63,7 +63,8 @@ class EmojiArtDocumentViewModel: ObservableObject {
         } else {
             emojiArt = EmojiArtModel()
         }
-        emojiArt.addEmoji("🐶", at: (-200, -100), size: 80)
+        /// default emoji
+        /// emojiArt.addEmoji("🐶", at: (-200, -100), size: 80)
     }
     
     var emojis: [EmojiArtModel.Emoji] { emojiArt.emojis }
