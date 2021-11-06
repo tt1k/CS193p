@@ -11,6 +11,7 @@ import SwiftUI
 struct MemorizeApp: App {
 //    private let game = MemoryGameViewModel()
     private let document = EmojiArtDocumentViewModel()
+    let paletteStore = PaletteStore(named: "Default")
     
     var body: some Scene {
         WindowGroup {
